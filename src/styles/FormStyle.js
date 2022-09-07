@@ -7,7 +7,6 @@ export default function FormStyle({ children }) {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw;
     align-items: center;
     justify-content: center;
 
@@ -23,7 +22,7 @@ const Wrapper = styled.div`
         align-items: center;
         background-color: var(--sub-color);
         border: none;
-        width: 85%;
+        width: 90vw;
         height: 45px;
         border-radius: 5px;
         cursor: pointer;
@@ -32,7 +31,7 @@ const Wrapper = styled.div`
     }
 
     input {
-        width: 85%;
+        width: 90vw;
         color: #000000;
         font-size: 20px;
         background-color: #ffffff;

@@ -159,6 +159,7 @@ table {
         body{ 
             background-color: var(--main-color);
         }
+        
     }
 
 `;
