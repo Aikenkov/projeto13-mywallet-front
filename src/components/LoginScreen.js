@@ -23,8 +23,8 @@ export default function LoginScreen() {
             ...form,
         };
 
-        /* localStorage.setItem("token", res.data.token);
-        navigate("/principal"); */
+        /* localStorage.setItem("token", res.data.token);*/
+        navigate("/home");
     }
 
     return (
