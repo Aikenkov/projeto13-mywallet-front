@@ -27,14 +27,12 @@ export default function LoginScreen() {
         signIn(body)
             .then((res) => {
                 localStorage.setItem("token", res.data.token);
-                localStorage.setItem("userName", res.data.name);
+                localStorage.setItem("name", res.data.name);
                 navigate("/home");
             })
             .catch((err) => {
                 alert(err.response.data);
             });
-
-        /*const userImage = localStorage.getItem("userImage"); */
         navigate("/home");
     }
 

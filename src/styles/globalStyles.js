@@ -137,9 +137,10 @@ table {
 }
 /* ____________________________________________________Meu Style global________________________________________________________________________________________ */
 
-    *{     
-        font-family: 'Raleway', sans-serif;
+    *{  
         font-family: 'Saira Stencil One', cursive;
+        font-family: 'Raleway', sans-serif;
+        
 
         --main-color: #8C11BE;
         --sub-color: #A328D6;
@@ -148,7 +149,7 @@ table {
 		font-weight: 400;
         box-sizing: border-box;
         color: var(--font-color);
-        font-family: Raleway;
+        
         // font-family: Saira Stencil One;
         font-size: 15px;
 
@@ -157,6 +158,7 @@ table {
         }
         
         body{ 
+            font-family: Raleway;
             background-color: var(--main-color);
         }
         

@@ -15,7 +15,7 @@ export default function App() {
                     <Route path='/' element={<LoginScreen />} />
                     <Route path='/cadastro' element={<RegistrationScreen />} />
                     <Route path='/home' element={<HomeScreen />} />
-                    <Route path='/new-entry' element={<NewEntry />} />
+                    <Route path='/new-entrie' element={<NewEntry />} />
                     <Route path='/new-exit' element={<NewExit />} />
                 </Routes>
             </BrowserRouter>

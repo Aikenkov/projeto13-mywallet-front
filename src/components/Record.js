@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export default function Record({ type, description, date, value }) {
+    value.replace(".", ",");
     return (
         <Wrapper type={type}>
             <div>
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 12px 0;
-    min-height: 20px;
+    min-height: 10px;
 
     & > :first-child {
         display: flex;
@@ -35,10 +36,11 @@ const Wrapper = styled.div`
         font-size: 16px;
         color: #000000;
         width: 80%;
+        line-height: 19px;
     }
 
     h3 {
         font-size: 16px;
-        color: ${(props) => (props.type === "entry" ? "green" : "red")};
+        color: ${(props) => (props.type === "entrie" ? "green" : "red")};
     }
 `;

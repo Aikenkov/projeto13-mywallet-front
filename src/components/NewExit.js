@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import FormStyle from "../styles/FormStyle";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { postEntrie } from "../services/mywallet";
 
 export default function NewExit() {
     const [form, setForm] = useState({
         value: "",
         description: "",
     });
+    const navigate = useNavigate();
 
     function handleForm(e) {
         setForm({
@@ -15,12 +17,27 @@ export default function NewExit() {
             [e.target.name]: e.target.value,
         });
     }
+    function submit(e) {
+        e.preventDefault();
+        const body = {
+            ...form,
+            type: "exit",
+        };
+
+        postEntrie(body)
+            .then(() => {
+                navigate("/home");
+            })
+            .catch((err) => {
+                alert(err.response.data);
+            });
+    }
 
     return (
         <Wrapper>
             <h1>Nova saída</h1>
             <FormStyle>
-                <form onSubmit={handleForm}>
+                <form onSubmit={submit}>
                     <input
                         placeholder='Valor'
                         type='text'

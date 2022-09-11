@@ -22,4 +22,16 @@ function signIn(body) {
     return promise;
 }
 
-export { signUp, signIn };
+function getHistory() {
+    const config = createHeaders();
+    const promise = axios.get(`${baseURL}/history`, config);
+    return promise;
+}
+
+function postEntrie(body) {
+    const config = createHeaders();
+    const promise = axios.post(`${baseURL}/entrie`, body, config);
+    return promise;
+}
+
+export { signUp, signIn, getHistory, postEntrie };
