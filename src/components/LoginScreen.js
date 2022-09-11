@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import FormStyle from "../styles/FormStyle";
+import { signIn } from "../services/mywallet";
 
 export default function LoginScreen() {
     const [form, setForm] = useState({
@@ -23,7 +24,17 @@ export default function LoginScreen() {
             ...form,
         };
 
-        /* localStorage.setItem("token", res.data.token);*/
+        signIn(body)
+            .then((res) => {
+                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("userName", res.data.name);
+                navigate("/home");
+            })
+            .catch((err) => {
+                alert(err.response.data);
+            });
+
+        /*const userImage = localStorage.getItem("userImage"); */
         navigate("/home");
     }
 
