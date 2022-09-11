@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import FormStyle from "../styles/FormStyle";
+import { signUp } from "../services/mywallet";
 
 export default function RegistrationScreen() {
     const [form, setForm] = useState({
@@ -10,7 +11,6 @@ export default function RegistrationScreen() {
         password: "",
         confirm: "",
     });
-    const [loading, setLoading] = useState("false");
     const navigate = useNavigate();
 
     function handleForm(e) {
@@ -25,16 +25,21 @@ export default function RegistrationScreen() {
         const { name, confirm, email, password } = form;
 
         if (password !== confirm) {
-            return alert("Confirme a senha está errado");
+            return alert("'Confirme a senha' está errado");
         }
-
         const body = {
             name,
             email,
             password,
         };
 
-        navigate("/");
+        signUp(body)
+            .then(() => {
+                navigate("/");
+            })
+            .catch((err) => {
+                alert(err.response.data);
+            });
     }
 
     return (

@@ -1,7 +1,49 @@
 import styled from "styled-components";
+import Record from "./Record";
 import logout from "../assets/logout.png";
 import minus from "../assets/minus.png";
 import plus from "../assets/plus.png";
+
+const teste = [
+    {
+        description: "compras para mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entrada",
+    },
+    {
+        description: "compras para mãe compras para mãe compras para mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entrada",
+    },
+    {
+        description: "compras para mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entrada",
+    },
+    {
+        description: "compras para mães mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entrada",
+    },
+    {
+        description: "compras para mães mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entry",
+    },
+    {
+        description: "compras para mãe mãe",
+        date: "30/11",
+        value: "30,90",
+        type: "entry",
+    },
+];
+
+/* const teste = []; */
 
 export default function HomeScreen() {
     return (
@@ -10,9 +52,27 @@ export default function HomeScreen() {
                 <h1>Olá Fulano</h1>
                 <img src={logout} alt='logout' />
             </div>
-            <Records>
-                <p>Não há registros de entrada ou saída</p>
-            </Records>
+
+            {teste.length > 0 ? (
+                <Records>
+                    {teste.map((item, i) => {
+                        return (
+                            <Record
+                                key={i}
+                                description={item.description}
+                                date={item.date}
+                                value={item.value}
+                                type={item.type}
+                            />
+                        );
+                    })}
+                </Records>
+            ) : (
+                <NoRecords>
+                    <p>Não há registros de entrada ou saída</p>
+                </NoRecords>
+            )}
+
             <NewRecord>
                 <div>
                     <img src={plus} alt='plus png' />
@@ -27,6 +87,18 @@ export default function HomeScreen() {
     );
 }
 
+const NoRecords = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+        color: #868686;
+        font-size: 20px;
+        width: 250px;
+        text-align: center;
+    }
+`;
+
 const Records = styled.div`
     width: 100%;
     background-color: #ffffff;
@@ -34,15 +106,8 @@ const Records = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-
-    p {
-        color: #868686;
-        font-size: 20px;
-        width: 250px;
-        text-align: center;
-    }
+    padding: 12px;
 `;
 
 const NewRecord = styled.div`

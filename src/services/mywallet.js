@@ -1,8 +1,6 @@
 import axios from "axios";
-import dayjs from "dayjs";
 
-const baseURL = "localhost:5000/";
-const day = dayjs().format("DD/MM");
+const baseURL = "http://localhost:5000";
 
 function createHeaders() {
     const auth = localStorage.getItem("token");
@@ -14,4 +12,9 @@ function createHeaders() {
     return config;
 }
 
-export { day };
+function signUp(body) {
+    const promise = axios.post(`${baseURL}/signUp`, body);
+    return promise;
+}
+
+export { signUp };
