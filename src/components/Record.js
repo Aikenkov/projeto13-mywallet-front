@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export default function Record({ type, description, date, value }) {
-    value.replace(".", ",");
+    value = value.replace(".", ",");
     return (
         <Wrapper type={type}>
             <div>
