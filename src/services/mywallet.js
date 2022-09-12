@@ -34,4 +34,10 @@ function postEntrie(body) {
     return promise;
 }
 
-export { signUp, signIn, getHistory, postEntrie };
+function endSession() {
+    const config = createHeaders();
+    const promise = axios.delete(`${baseURL}/logout`, config);
+    return promise;
+}
+
+export { signUp, signIn, getHistory, postEntrie, endSession };

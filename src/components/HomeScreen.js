@@ -4,7 +4,7 @@ import logout from "../assets/logout.png";
 import minus from "../assets/minus.png";
 import plus from "../assets/plus.png";
 import { useEffect, useState } from "react";
-import { getHistory } from "../services/mywallet";
+import { endSession, getHistory } from "../services/mywallet";
 import { useNavigate } from "react-router-dom";
 
 export default function HomeScreen() {
@@ -29,7 +29,20 @@ export default function HomeScreen() {
         <Wrapper>
             <div>
                 <h1>Olá {name}</h1>
-                <img onClick={() => navigate("/")} src={logout} alt='logout' />
+                <img
+                    onClick={() => {
+                        endSession()
+                            .then(() => {
+                                localStorage.clear("token");
+                                navigate("/");
+                            })
+                            .catch((err) => {
+                                alert(err.data);
+                            });
+                    }}
+                    src={logout}
+                    alt='logout'
+                />
             </div>
 
             {history.length > 0 ? (
