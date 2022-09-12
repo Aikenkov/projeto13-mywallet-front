@@ -17,15 +17,23 @@ function signUp(body) {
     return promise;
 }
 
-function signIn(body) {
-    const promise = axios.post(`${baseURL}/signIn`, body);
-    return promise;
+async function signIn(body) {
+    try {
+        const promise = await axios.post(`${baseURL}/signIn`, body);
+        return promise;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-function getHistory() {
-    const config = createHeaders();
-    const promise = axios.get(`${baseURL}/history`, config);
-    return promise;
+async function getHistory() {
+    try {
+        const config = createHeaders();
+        const promise = await axios.get(`${baseURL}/history`, config);
+        return promise;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function postEntrie(body) {
@@ -34,10 +42,14 @@ function postEntrie(body) {
     return promise;
 }
 
-function endSession() {
-    const config = createHeaders();
-    const promise = axios.delete(`${baseURL}/logout`, config);
-    return promise;
+async function endSession() {
+    try {
+        const config = createHeaders();
+        const promise = await axios.delete(`${baseURL}/logout`, config);
+        return promise;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 export { signUp, signIn, getHistory, postEntrie, endSession };

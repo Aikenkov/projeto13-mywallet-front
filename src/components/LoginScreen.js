@@ -33,7 +33,6 @@ export default function LoginScreen() {
             .catch((err) => {
                 alert(err.response.data);
             });
-        navigate("/home");
     }
 
     return (

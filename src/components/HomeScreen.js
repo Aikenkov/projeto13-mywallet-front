@@ -89,7 +89,11 @@ export default function HomeScreen() {
 const NoRecords = styled.div`
     display: flex;
     align-items: center;
+    background-color: #ffffff;
+    height: 450px;
+    border-radius: 5px;
     justify-content: center;
+    width: 100%;
     p {
         color: #868686;
         font-size: 20px;
